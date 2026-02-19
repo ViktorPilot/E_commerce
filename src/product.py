@@ -1,30 +1,18 @@
 class Product:
-    """Класс товары"""
+    """Класс товары из категорий"""
+
     name: str
     description: str
     price: float
     quantity: int
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name: str, description: str, price: float, quantity: int):
+        """Инициализация экземпляра класса 'Product'"""
         self.name = name
         self.description = description
         self.price = price
         self.quantity = quantity
 
 
-class Category:
-    """Класс категории товаров"""
-    name: str
-    description: str
-    products: str
-    category_count = 0
-    product_count = 0
-
-    def __init__(self, name, description, products):
-        self.name = name
-        self.description = description
-        self.products = products
-        Category.category_count += 1
-        Category.product_count += len(self.products)
-
-
+if __name__ == "__main__":
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
