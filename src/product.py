@@ -19,9 +19,9 @@ class Product:
         """Классметод преобразования словаря с параметрами товара в объект 'Product'.
         Суммирует количество товара, имеющее одинаковое наименование и сохраняет максимальную цену товара"""
         for i in cls.list_product:
-            if product.get("name") == i[0]:
-                product["quantity"] += i[2]
+            if product["name"] == i[0]:
                 product["price"] = max(i[1], product["price"])
+                product["quantity"] += i[2]
                 cls.list_product.remove(i)
         return cls(**product)
 
@@ -55,10 +55,6 @@ class Product:
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    Product.new_product({"name": "Samsung Galaxy S23 Ultra", "description": "ppppp", "price": 88.90, "quantity": 888})
-    Product.new_product({"name": "Samsung Galaxy S23 Ultra", "description": "ppppp", "price": 888.90, "quantity": 2})
-    Product.new_product({"name": "Samsung Galaxy S23 Ultra", "description": "ppppp", "price": 88.90, "quantity": 2})
-    print(product1.price)
-    product1.price = -12
-    print(product1.price)
-
+    product2 = Product.new_product({"name": "casio", "description": "for_current_time", "price": 100.00, "quantity": 7})
+    product3 = Product.new_product({"name": "casio", "description": "for_current_time", "price": 80.00, "quantity": 8})
+    print(product3.quantity)

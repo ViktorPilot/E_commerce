@@ -26,7 +26,7 @@ class Category:
 
     @property
     def products(self) -> str:
-        """Геттер, возвращающий строку с информацией о товарах."""
+        """Геттер, возвращающий строку с информацией о товарах заданной категории"""
         products_str = ""
         for product in self.__products:
             products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
@@ -39,8 +39,3 @@ if __name__ == "__main__":
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [],
     )
-    product4 = Product("S G S23 Ultra", "Серый", 180000.0, 5)
-    category1.add_product(product4)
-    product5 = Product("Ultra", "Серый", 180000.0, 5)
-    category1.add_product(product5)
-    print(category1.products)

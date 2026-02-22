@@ -15,8 +15,7 @@ def test_get_categories_and_products_valid(mock_json: Mock, get_categories_and_p
     result = get_categories_and_products(os.path.join(BASE_DIR, "data/products.json"))
     assert result[0].name == "Смартфоны"
     assert result[1].name == "Телевизоры"
-    assert result[0].products[0].name == "Samsung Galaxy C23 Ultra"
-    assert result[1].products[0].price == 123000.0
+    assert result[0].products == "Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.\nIphone 15, 210000.0 руб. Остаток: 8 шт.\n"
 
 
 @patch("src.read_products_json.json")
