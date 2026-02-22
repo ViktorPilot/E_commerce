@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Product:
     """Класс товары из категорий"""
 
@@ -5,7 +8,8 @@ class Product:
     description: str
     price: float
     quantity: int
-    list_product = []
+    list_product: list = []
+
     def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         """Инициализация экземпляра класса 'Product'"""
         self.name = name
@@ -15,7 +19,7 @@ class Product:
         Product.list_product.append((name, price, quantity))
 
     @classmethod
-    def new_product(cls, product: dict):
+    def new_product(cls, product: dict) -> Any:
         """Классметод преобразования словаря с параметрами товара в объект 'Product'.
         Суммирует количество товара, имеющее одинаковое наименование и сохраняет максимальную цену товара"""
         for i in cls.list_product:
@@ -37,11 +41,10 @@ class Product:
         При отрицательных значениях цены дополнительно выводит информацию об этом в консоль."""
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
-        if new_price < self.__price:
+        elif new_price < self.__price:
             while True:
                 answer = input("Введите y/n для подтверждения снижения цены:\n").strip().lower()
                 if answer == "n":
-                    self.__price = self.__price
                     break
                 elif answer != "y":
                     print("Введен неверный ответ.")
@@ -53,8 +56,24 @@ class Product:
             self.__price = new_price
 
 
-if __name__ == "__main__":
-    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    product2 = Product.new_product({"name": "casio", "description": "for_current_time", "price": 100.00, "quantity": 7})
-    product3 = Product.new_product({"name": "casio", "description": "for_current_time", "price": 80.00, "quantity": 8})
-    print(product3.quantity)
+if __name__ == "__main__":  # pragma:no cover
+    new_product = Product.new_product(
+        {
+            "name": "Samsung Galaxy S23 Ultra",
+            "description": "256GB, Серый цвет, 200MP камера",
+            "price": 180000.0,
+            "quantity": 5,
+        }
+    )
+    print(new_product.name)
+    print(new_product.description)
+    print(new_product.price)
+    print(new_product.quantity)
+
+    new_product.price = 800
+    print(new_product.price)
+
+    new_product.price = -100
+    print(new_product.price)
+    new_product.price = 0
+    print(new_product.price)

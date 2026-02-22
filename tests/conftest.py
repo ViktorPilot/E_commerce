@@ -59,11 +59,13 @@ def get_categories_and_products_valid() -> list[dict]:
         },
     ]
 
+
 @pytest.fixture(autouse=True)
 def reset_counters() -> None:
     Product.list_product = []
     Category.category_count = 0
     Category.product_count = 0
+
 
 @pytest.fixture
 def add_product1() -> Product:
