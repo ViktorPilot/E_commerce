@@ -19,12 +19,14 @@ class Category:
         Category.product_count += len(self.__products)
 
     def add_product(self, product: Product) -> None:
+        """Метод класса, позволяющий вызывать приватный атрибут списка продуктов"""
         self.__products.append(product)
         Category.product_count += 1
 
 
     @property
     def products(self) -> str:
+        """Геттер, возвращающий строку с информацией о товарах."""
         products_str = ""
         for product in self.__products:
             products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"

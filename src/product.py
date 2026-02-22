@@ -12,7 +12,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
-        Product.list_product.append((name, description, price, quantity))
+        Product.list_product.append((name, price, quantity))
 
     @classmethod
     def new_product(cls, product: dict):
@@ -20,17 +20,21 @@ class Product:
         Суммирует количество товара, имеющее одинаковое наименование и сохраняет максимальную цену товара"""
         for i in cls.list_product:
             if product.get("name") == i[0]:
-                product["quantity"] += i[3]
-                product["price"] = max(i[2], product["price"])
+                product["quantity"] += i[2]
+                product["price"] = max(i[1], product["price"])
                 cls.list_product.remove(i)
         return cls(**product)
 
     @property
-    def price(self):
+    def price(self) -> float:
+        """Геттер, позволяющий вызывать цену товара"""
         return self.__price
 
     @price.setter
-    def price(self, new_price):
+    def price(self, new_price: float) -> None:
+        """Сеттер, позволяющий изменять цену товара.
+        Если новая цена менее старой пользователь имеет возможность оставить предидущую цену или заменить на новую.
+        При отрицательных значениях цены дополнительно выводит информацию об этом в консоль."""
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
         if new_price < self.__price:
