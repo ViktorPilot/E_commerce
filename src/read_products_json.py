@@ -20,9 +20,10 @@ def get_categories_and_products(path_to_products: str) -> list:
             list_product.append(Product(**prod))
         categories["products"] = list_product
         list_category.append(Category(**categories))
+        print(list_category)
     return list_category
 
 
 if __name__ == "__main__":
     res = get_categories_and_products("../data/products.json")
-    print(res[0].name)
+    print(res[0].products)
