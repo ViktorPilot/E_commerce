@@ -20,10 +20,11 @@ class Category:
         self.quantity = 0
 
     def __str__(self) -> str:
+        """Реализация магического метода __str__, возвращающего строку с названием категории
+        и общем количестве товаров в ней"""
         for product in self.__products:
             self.quantity += product.quantity
         return f"{self.name}, количество продуктов: {self.quantity} шт."
-
 
     def add_product(self, product: Product) -> None:
         """Метод класса, позволяющий вызывать приватный атрибут списка продуктов"""
