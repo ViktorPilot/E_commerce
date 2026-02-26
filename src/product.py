@@ -18,6 +18,13 @@ class Product:
         self.quantity = quantity
         Product.list_product.append((name, price, quantity))
 
+    def __str__(self) -> str:
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: Any) -> float:
+        return self.__price * self.quantity + other.__price * other.quantity
+
+
     @classmethod
     def new_product(cls, product: dict) -> Any:
         """Классметод преобразования словаря с параметрами товара в объект 'Product'.

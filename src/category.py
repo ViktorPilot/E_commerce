@@ -17,6 +17,13 @@ class Category:
         self.__products = products
         Category.category_count += 1
         Category.product_count += len(self.__products)
+        self.quantity = 0
+
+    def __str__(self) -> str:
+        for product in self.__products:
+            self.quantity += product.quantity
+        return f"{self.name}, количество продуктов: {self.quantity} шт."
+
 
     def add_product(self, product: Product) -> None:
         """Метод класса, позволяющий вызывать приватный атрибут списка продуктов"""
