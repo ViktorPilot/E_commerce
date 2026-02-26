@@ -40,11 +40,3 @@ def test_str_category(category_electronics: Category) -> None:
     """Тестирование магического метода __str__, возвращающего строку с названием категории
     и общем количестве товаров в ней"""
     assert str(category_electronics) == "watch, количество продуктов: 11 шт."
-
-
-
-
-
-
-
-

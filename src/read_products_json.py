@@ -24,6 +24,6 @@ def get_categories_and_products(path_to_products: str) -> list:
     return list_category
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma:no cover
     res = get_categories_and_products("../data/products.json")
     print(res[0].products)

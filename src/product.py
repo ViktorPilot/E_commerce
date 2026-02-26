@@ -19,10 +19,10 @@ class Product:
         Product.list_product.append((name, price, quantity))
 
     def __str__(self) -> str:
-        """Реализация магического метода __str__, возвращающего информацию о продукте"""
+        """Реализация магического метода __str__, возвращающего информацию о товаре"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: Any) -> float:
+    def __add__(self, other: Any) -> Any:
         """Реализация магического метода __add__, возвращающего сумму произведений цены на количество у двух товаров"""
         return self.__price * self.quantity + other.__price * other.quantity
 
