@@ -1,6 +1,7 @@
 import pytest
 
 from src.category import Category
+from src.iterator_prod import IteratorProduct
 from src.product import Product
 
 
@@ -70,3 +71,8 @@ def reset_counters() -> None:
 @pytest.fixture
 def add_product1() -> Product:
     return Product("g-shock", "for_current_time", 333.00, 6)
+
+
+@pytest.fixture
+def iterator_1(category_electronics: Category) -> IteratorProduct:
+    return IteratorProduct(category_electronics)

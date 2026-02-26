@@ -17,6 +17,14 @@ class Category:
         self.__products = products
         Category.category_count += 1
         Category.product_count += len(self.__products)
+        self.quantity = 0
+
+    def __str__(self) -> str:
+        """Реализация магического метода __str__, возвращающего строку с названием категории
+        и общем количестве товаров в ней"""
+        for product in self.__products:
+            self.quantity += product.quantity
+        return f"{self.name}, количество продуктов: {self.quantity} шт."
 
     def add_product(self, product: Product) -> None:
         """Метод класса, позволяющий вызывать приватный атрибут списка продуктов"""
@@ -28,7 +36,7 @@ class Category:
         """Геттер, возвращающий строку с информацией о товарах заданной категории"""
         products_str = ""
         for product in self.__products:
-            products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            products_str += str(product) + "\n"
         return products_str
 
 

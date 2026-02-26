@@ -56,3 +56,13 @@ def test_price_setter(mock_input: Mock, capsys: Any, product_casio: Product) -> 
     product_casio.price = 50.00
     mock_input.side_effect = ["a", "y"]
     assert product_casio.price == 50.00
+
+
+def test_str_product(product_casio: Product) -> None:
+    """Тестирование магического метода __str__, возвращающего информацию о товаре"""
+    assert str(product_casio) == "casio, 100.0 руб. Остаток: 4 шт."
+
+
+def test_add_product(product_casio: Product, add_product1: Product) -> None:
+    """Тестирование магического метода __add__, возвращающего сумму произведений цены на количество у двух товаров"""
+    assert product_casio + add_product1 == 2398.00
