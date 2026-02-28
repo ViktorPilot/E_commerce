@@ -1,7 +1,10 @@
 from typing import Any
 from unittest.mock import Mock, patch
 
+from src.prod_smartphone import Smartphone
 from src.product import Product
+
+import pytest
 
 
 def test_init_product_valid(product_casio: Product) -> None:
@@ -63,6 +66,12 @@ def test_str_product(product_casio: Product) -> None:
     assert str(product_casio) == "casio, 100.0 руб. Остаток: 4 шт."
 
 
-def test_add_product(product_casio: Product, add_product1: Product) -> None:
+def test_add_product_one_cat(product_casio: Product, add_product1: Product) -> None:
     """Тестирование магического метода __add__, возвращающего сумму произведений цены на количество у двух товаров"""
     assert product_casio + add_product1 == 2398.00
+
+
+def test_add_product_no_one_cat(product_casio: Product, smartphone_1: Smartphone) -> None:
+    """Тестирование возникновения исключения при суммировании товаров из разных категорий"""
+    with pytest.raises(TypeError):
+        product_casio + smartphone_1

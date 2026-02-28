@@ -27,9 +27,14 @@ class Category:
         return f"{self.name}, количество продуктов: {self.quantity} шт."
 
     def add_product(self, product: Product) -> None:
-        """Метод класса, позволяющий вызывать приватный атрибут списка продуктов"""
-        self.__products.append(product)
-        Category.product_count += 1
+        """Метод класса, позволяющий добавлять товар к списку товаров заданной категории,
+        если он является экземпляром этого или дочерних классов"""
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError("Товар не принадлежит разрешенным для добавления категориям.")
+
 
     @property
     def products(self) -> str:
