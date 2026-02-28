@@ -1,10 +1,10 @@
 from typing import Any
 from unittest.mock import Mock, patch
 
+import pytest
+
 from src.prod_smartphone import Smartphone
 from src.product import Product
-
-import pytest
 
 
 def test_init_product_valid(product_casio: Product) -> None:

@@ -28,6 +28,7 @@ def test_add_product_one_class_1(category_electronics: Category, add_product1: P
     assert category_electronics.product_count == 4
     assert add_product1.name == "g-shock"
 
+
 def test_add_product_one_class_2(category_electronics: Category, grass_1: LawnGrass, smartphone_1: Smartphone) -> None:
     """Тестирование метода класса, позволяющего добавлять товар в категорию,
     если добавляемый товар из дочернего класса"""
@@ -42,7 +43,7 @@ def test_add_product_no_one_class(category_electronics: Category) -> None:
     """Тестирование метода класса, позволяющего добавлять товар в категорию,
     если добавляемый товар не принадлежит этому и дочерним классам"""
     with pytest.raises(TypeError):
-        category_electronics.add_product("unexpect_product")
+        category_electronics.add_product("unexpect_product")  # type: ignore
 
 
 def test_products(category_electronics: Category, add_product1: Product) -> None:
@@ -60,4 +61,3 @@ def test_str_category(category_electronics: Category) -> None:
     """Тестирование магического метода __str__, возвращающего строку с названием категории
     и общем количестве товаров в ней"""
     assert str(category_electronics) == "watch, количество продуктов: 11 шт."
-

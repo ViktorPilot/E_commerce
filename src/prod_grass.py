@@ -3,8 +3,17 @@ from src.product import Product
 
 class LawnGrass(Product):
     """Определение класса 'LawnGrass'"""
-    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: str,
-                 color: str) -> None:
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: str,
+        color: str,
+    ) -> None:
         """Инициализация экземпляров класса"""
         super().__init__(name, description, price, quantity)
         self.country = country

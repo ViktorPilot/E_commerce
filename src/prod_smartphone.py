@@ -3,8 +3,18 @@ from src.product import Product
 
 class Smartphone(Product):
     """Определение класса 'Smartphone'"""
-    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: float, model: str,
-                 memory: int, color: str) -> None:
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        efficiency: float,
+        model: str,
+        memory: int,
+        color: str,
+    ) -> None:
         """Инициализация экземпляров класса"""
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency

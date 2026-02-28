@@ -1,3 +1,5 @@
+from typing import Any
+
 from src.product import Product
 
 
@@ -26,7 +28,7 @@ class Category:
             self.quantity += product.quantity
         return f"{self.name}, количество продуктов: {self.quantity} шт."
 
-    def add_product(self, product: Product) -> None:
+    def add_product(self, product: Any) -> None:
         """Метод класса, позволяющий добавлять товар к списку товаров заданной категории,
         если он является экземпляром этого или дочерних классов"""
         if isinstance(product, Product):
@@ -34,7 +36,6 @@ class Category:
             Category.product_count += 1
         else:
             raise TypeError("Товар не принадлежит разрешенным для добавления категориям.")
-
 
     @property
     def products(self) -> str:

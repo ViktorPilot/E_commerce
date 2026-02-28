@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any
 
 
@@ -31,7 +33,7 @@ class Product:
             raise TypeError("Товары не находятся в одной категории. Сложение невозможно.")
 
     @classmethod
-    def new_product(cls, product: dict) -> Any:
+    def new_product(cls, product: dict) -> Product:
         """Классметод преобразования словаря с параметрами товара в объект 'Product'.
         Суммирует количество товара, имеющее одинаковое наименование и сохраняет максимальную цену товара"""
         for i in cls.list_product:
