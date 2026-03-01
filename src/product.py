@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any
 
 
@@ -23,11 +25,15 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: Any) -> Any:
-        """Реализация магического метода __add__, возвращающего сумму произведений цены на количество у двух товаров"""
-        return self.__price * self.quantity + other.__price * other.quantity
+        """Реализация магического метода __add__, возвращающего сумму произведений цены на количество
+        у двух товаров из одной категории"""
+        if type(other) is self.__class__:
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError("Товары не находятся в одной категории. Сложение невозможно.")
 
     @classmethod
-    def new_product(cls, product: dict) -> Any:
+    def new_product(cls, product: dict) -> Product:
         """Классметод преобразования словаря с параметрами товара в объект 'Product'.
         Суммирует количество товара, имеющее одинаковое наименование и сохраняет максимальную цену товара"""
         for i in cls.list_product:
