@@ -1,9 +1,10 @@
 from typing import Any
 
+from src.base_cat_and_ord import BaseCatOrd
 from src.product import Product
 
 
-class Category:
+class Category(BaseCatOrd):
     """Класс категории товаров"""
 
     name: str
@@ -14,6 +15,7 @@ class Category:
 
     def __init__(self, name: str, description: str, products: list) -> None:
         """Инициализация экземпляра класса 'Category'"""
+        super().__init__(name)
         self.name = name
         self.description = description
         self.__products = products

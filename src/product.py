@@ -93,5 +93,3 @@ if __name__ == "__main__":  # pragma:no cover
     print(new_product.price)
     new_product.price = 0
     print(new_product.price)
-
-print(Product.__mro__)
