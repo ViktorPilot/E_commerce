@@ -20,7 +20,7 @@ class Product(BaseProduct, ProductMixin):
         self.__price = price
         super().__init__(name, description, quantity)
         Product.list_product.append((name, price, quantity))
-
+        ProductMixin.__init__(self)
     def __str__(self) -> str:
         """Реализация магического метода __str__, возвращающего информацию о товаре"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
@@ -92,3 +92,5 @@ if __name__ == "__main__":  # pragma:no cover
     print(new_product.price)
     new_product.price = 0
     print(new_product.price)
+
+print(Product.__mro__)
