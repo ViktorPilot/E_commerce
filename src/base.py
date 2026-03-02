@@ -9,6 +9,7 @@ class BaseProduct(ABC):
         self.name = name
         self.description = description
         self.quantity = quantity
+        super().__init__()
 
     @abstractmethod
     def __add__(self, other: Any) -> None:
