@@ -15,7 +15,6 @@ class Category(BaseCatOrd):
 
     def __init__(self, name: str, description: str, products: list) -> None:
         """Инициализация экземпляра класса 'Category'"""
-        super().__init__(name)
         self.name = name
         self.description = description
         self.__products = products

@@ -6,7 +6,6 @@ class OrderProduct(BaseCatOrd):
 
     def __init__(self, name: str, quantity: int, price: float) -> None:
         """Инициализация экземпляра класса купленного товара"""
-        super().__init__(name)
         self.name = name
         self.quantity = quantity
         self.__price = price
