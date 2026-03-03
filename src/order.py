@@ -17,6 +17,6 @@ class OrderProduct(BaseCatOrd):
         return f"{self.name}, количество: {self.quantity}, стоимость: {self.__price}"
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     car1 = OrderProduct("Ford", 1, 300.50)
     print(car1)

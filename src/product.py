@@ -21,7 +21,6 @@ class Product(BaseProduct, ProductMixin):
         super().__init__(name, description, quantity)
         Product.list_product.append((name, price, quantity))
 
-
     def __str__(self) -> str:
         """Реализация магического метода __str__, возвращающего информацию о товаре"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
