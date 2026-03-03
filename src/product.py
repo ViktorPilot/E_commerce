@@ -2,8 +2,11 @@ from __future__ import annotations
 
 from typing import Any
 
+from src.base import BaseProduct
+from src.mixin_prod import ProductMixin
 
-class Product:
+
+class Product(BaseProduct, ProductMixin):
     """Класс товары из категорий"""
 
     name: str
@@ -14,10 +17,8 @@ class Product:
 
     def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         """Инициализация экземпляра класса 'Product'"""
-        self.name = name
-        self.description = description
         self.__price = price
-        self.quantity = quantity
+        super().__init__(name, description, quantity)
         Product.list_product.append((name, price, quantity))
 
     def __str__(self) -> str:

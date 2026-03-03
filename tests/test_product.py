@@ -40,7 +40,7 @@ def test_price_setter(mock_input: Mock, capsys: Any, product_casio: Product) -> 
     # при новой цене меньше 0
     product_casio.price = -100.00
     captured = capsys.readouterr()
-    assert captured.out == "Цена не должна быть нулевая или отрицательная\n"
+    assert captured.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
     assert product_casio.price == 200.00
 
     # при новой цене больше 0, но меньше старого значения
