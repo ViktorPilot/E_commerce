@@ -46,6 +46,12 @@ class Category(BaseCatOrd):
             products_str += str(product) + "\n"
         return products_str
 
+    def middle_price(self) -> float:
+        """Расчет средней стоимости товаров в категории"""
+        try:
+            return sum([prod.price for prod in self.__products]) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
 
 if __name__ == "__main__":  # pragma:no cover
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
@@ -63,3 +69,5 @@ if __name__ == "__main__":  # pragma:no cover
     category1.add_product(product4)
     print(category1.products)
     print(category1.product_count)
+
+    print(category1.middle_price())
