@@ -61,3 +61,13 @@ def test_str_category(category_electronics: Category) -> None:
     """Тестирование магического метода __str__, возвращающего строку с названием категории
     и общем количестве товаров в ней"""
     assert str(category_electronics) == "watch, количество продуктов: 11 шт."
+
+
+def test_middle_price_valid(category_electronics: Category) -> None:
+    """Тестирование расчета средней стоимости товаров категории"""
+    assert round(category_electronics.middle_price(), 2) == 183.33
+
+
+def test_middle_price_exception(category_relax: Category) -> None:
+    """Тестирование расчета средней стоимости товаров категории при отсутствии товаров"""
+    assert category_relax.middle_price() == 0
