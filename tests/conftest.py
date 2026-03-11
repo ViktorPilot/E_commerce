@@ -96,3 +96,8 @@ def grass_1() -> LawnGrass:
 @pytest.fixture
 def order_1() -> OrderProduct:
     return OrderProduct("Ford", 1, 300.55)
+
+
+@pytest.fixture
+def order_2() -> OrderProduct:
+    return OrderProduct("Ford", 0, 300.55)

@@ -75,3 +75,9 @@ def test_add_product_no_one_cat(product_casio: Product, smartphone_1: Smartphone
     """Тестирование возникновения исключения при суммировании товаров из разных категорий"""
     with pytest.raises(TypeError):
         product_casio + smartphone_1
+
+
+def test_base_quantity_zero() -> None:
+    """Тестирование возникновения исключения при инициализации товара с количеством 0"""
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product("casio", "for_current_time", 100.00, 0)

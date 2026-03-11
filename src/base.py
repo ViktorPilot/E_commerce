@@ -7,6 +7,8 @@ class BaseProduct(ABC):
 
     @abstractmethod
     def __init__(self, name: str, description: str, quantity: int) -> None:
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.name = name
         self.description = description
         self.quantity = quantity
